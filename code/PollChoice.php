@@ -54,7 +54,11 @@ class PollChoice extends DataObject {
 			$this->write();
 		}
 	}
-	
+
+	public function canView($member = null) {
+		return Permission::check('MANAGE_POLLS', 'any', $member);
+	}
+
 	public function canCreate($member = null) {
 		return Permission::check('MANAGE_POLLS', 'any', $member);
 	}
